@@ -3,7 +3,7 @@ require "spec_helper"
 class Search < ActiveRecord::Base; end
 
 class SearchInAHaystack < ActiveRecord::Base
-   self.table_name = '"search in a haystack"'
+  self.table_name = '"search in a haystack"'
 end
 
 describe Scenic::SchemaDumper, :db do
@@ -67,7 +67,7 @@ describe Scenic::SchemaDumper, :db do
       Search.connection.execute(
         "CREATE SCHEMA scenic; SET search_path TO scenic, public")
       Search.connection.create_view 'scenic."search in a haystack"',
-          sql_definition: view_definition
+        sql_definition: view_definition
       stream = StringIO.new
 
       ActiveRecord::SchemaDumper.dump(Search.connection, stream)
